@@ -1,0 +1,24 @@
+# A metapackge for installing GPU or CPU versions of torchvision explicitly
+
+{% set version = "0.7.0" %}
+
+package:
+   name: torchvision
+   version: {{ version }} 
+
+outputs:
+    - name: torchvision{{ '-cpu' if build_type == 'cpu' else '' }}
+      build:
+          number: 1
+      requirements:
+          run:
+             - pytorch-base {{ pytorch }}
+             - _pytorch_select {{ pytorch_select_version }}
+             - torchvision-base {{ torchvision }}
+
+about:
+  summary: Meta-package to install {{ 'GPU-enabled' if build_type == 'cuda' else 'CPU-only' }} torchvision variant
+
+extra:
+  recipe-maintainers:
+    - open-ce/open-ce-dev-team

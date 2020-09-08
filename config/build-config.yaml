@@ -1,0 +1,6 @@
+recipes:
+  - name : torchvision-base
+    path : recipe
+
+  - name : torchvision-meta
+    path : variants

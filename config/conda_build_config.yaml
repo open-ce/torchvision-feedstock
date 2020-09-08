@@ -1,0 +1,12 @@
+build_type:
+  - "cpu"
+  - "cuda"
+
+pytorch_select_version:
+  - "1.0"
+  - "2.0"
+
+# Tie pytorch_select_version to build_type
+zip_keys:
+  - pytorch_select_version
+  - build_type
