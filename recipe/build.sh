@@ -14,7 +14,6 @@ FORCE_CUDA=0
 if [ $build_type == "cuda" ]
 then
     export FORCE_CUDA=1
-    export NVCC_FLAGS="-ccbin $GXX"
 fi
 
 python setup.py install --single-version-externally-managed --record=record.txt
