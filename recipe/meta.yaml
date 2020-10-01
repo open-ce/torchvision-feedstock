@@ -25,6 +25,8 @@ requirements:
     - _pytorch_select  {{ pytorch_select_version }}
     - pytorch-base     {{ pytorch }}
     - setuptools {{ setuptools }}
+    - ffmpeg {{ ffmpeg }}
+    - av
 
   run:
     - cudatoolkit {{ cudatoolkit }}     # [build_type == 'cuda']
@@ -35,6 +37,8 @@ requirements:
     - _pytorch_select  {{ pytorch_select_version }}
     - pytorch-base     {{ pytorch }}
     - six {{ six }}
+    - ffmpeg                            # versioning handled by run_exports
+    - av
 
 about:
   home: http://pytorch.org/
