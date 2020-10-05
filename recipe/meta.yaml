@@ -8,6 +8,8 @@ source:
   fn: torchvision-{{ version }}.tar.gz
   url: https://github.com/pytorch/vision/archive/v{{ version }}.tar.gz
   sha256: fa0a6f44a50451115d1499b3f2aa597e0092a07afce1068750260fa7dd2c85cb
+  patches:
+    - 0101-find-ffmpeg-in-conda-env.patch
 
 build:
   number: 2
