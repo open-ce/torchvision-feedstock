@@ -7,7 +7,7 @@ index 85a6921..ede9662 100644
          )
  
 -    ffmpeg_exe = distutils.spawn.find_executable('ffmpeg')
-+    ffmpeg_exe = distutils.spawn.find_executable('ffmpeg', path=os.path.join(os.getenv('CONDA_PREFIX'), 'bin'))
++    ffmpeg_exe = distutils.spawn.find_executable('ffmpeg', path=os.path.join(os.getenv('PREFIX'), 'bin'))
      has_ffmpeg = ffmpeg_exe is not None
  
      if has_ffmpeg:
