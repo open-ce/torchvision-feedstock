@@ -13,13 +13,10 @@ build:
   number: 2
   string: {{ build_type }}_py{{ python | replace(".", "") }}_{{ PKG_BUILDNUM }}
   detect_binary_files_with_prefix: False
-  script_env:
-    - OPEN_CE_CUDA_HOME  
 
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - {{ compiler("cuda") }}     # [build_type == 'cuda']
 
   host: 
     - future {{ future }}
