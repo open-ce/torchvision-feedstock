@@ -21,7 +21,6 @@ requirements:
     - {{ compiler('cxx') }}
 
   host: 
-    - cudatoolkit-dev {{ cudatoolkit }} # [build_type == 'cuda']
     - future {{ future }}
     - python {{ python }}
     - _pytorch_select  {{ pytorch_select_version }}
