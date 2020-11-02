@@ -14,6 +14,11 @@ FORCE_CUDA=0
 if [ $build_type == "cuda" ]
 then
     export FORCE_CUDA=1
+
+    # Create symlinks of cublas headers into CONDA_PREFIX
+    mkdir -p $CONDA_PREFIX/include
+    find /usr/include -name cublas*.h -exec ln -s "{}" "$CONDA_PREFIX/include/" ';'
+    export CUDA_INCLUDE_PATH="${PREFIX}/include,${CUDA_HOME}/include,${CONDA_PREFIX}/include"
 fi
 
 python setup.py install --single-version-externally-managed --record=record.txt
