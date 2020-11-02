@@ -4,14 +4,14 @@ Date: Mon, 2 Nov 2020 04:06:52 -0600
 Subject: [PATCH] Fixed failure on baremetal
 
 ---
- setup.py | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ setup.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/setup.py b/setup.py
 index 85a6921..4d10f5b 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -122,10 +122,13 @@ def get_extensions():
+@@ -122,10 +122,12 @@ def get_extensions():
      define_macros = []
  
      extra_compile_args = {}
@@ -21,11 +21,10 @@ index 85a6921..4d10f5b 100644
          extension = CUDAExtension
          sources += source_cuda
 +        cuda_include_dir = os.getenv("CUDA_INCLUDE_PATH", None)
-+        print("CUDA Include Path: ", cuda_include_dir)
          if not is_rocm_pytorch:
              define_macros += [('WITH_CUDA', None)]
              nvcc_flags = os.getenv('NVCC_FLAGS', '')
-@@ -150,7 +153,8 @@ def get_extensions():
+@@ -150,7 +152,8 @@ def get_extensions():
      sources = [os.path.join(extensions_dir, s) for s in sources]
  
      include_dirs = [extensions_dir]
