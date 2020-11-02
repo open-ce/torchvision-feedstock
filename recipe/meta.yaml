@@ -10,11 +10,14 @@ source:
   sha256: fa0a6f44a50451115d1499b3f2aa597e0092a07afce1068750260fa7dd2c85cb
   patches:
     - 0101-find-ffmpeg-in-conda-env.patch
+    - 0102-Fixed-failure-on-baremetal.patch
 
 build:
-  number: 2
+  number: 3
   string: {{ build_type }}_py{{ python | replace(".", "") }}_{{ PKG_BUILDNUM }}
   detect_binary_files_with_prefix: False
+  script_env:
+    - CUDA_HOME
 
 requirements:
   build:
