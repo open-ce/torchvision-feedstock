@@ -1,17 +1,17 @@
-From fead0a034c286a5c5f9c56713907e962fca54963 Mon Sep 17 00:00:00 2001
+From 6e13837f35dd1db1344b41b224370984e13f85e4 Mon Sep 17 00:00:00 2001
 From: Nishidha Panpaliya <npanpa23@in.ibm.com>
-Date: Mon, 2 Nov 2020 04:06:52 -0600
+Date: Thu, 5 Nov 2020 12:35:34 +0000
 Subject: [PATCH] Fixed failure on baremetal
 
 ---
- setup.py | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ setup.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/setup.py b/setup.py
-index 85a6921..4d10f5b 100644
+index d667446..badf363 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -122,10 +122,12 @@ def get_extensions():
+@@ -181,10 +181,12 @@ def get_extensions():
      define_macros = []
  
      extra_compile_args = {}
@@ -24,25 +24,24 @@ index 85a6921..4d10f5b 100644
          if not is_rocm_pytorch:
              define_macros += [('WITH_CUDA', None)]
              nvcc_flags = os.getenv('NVCC_FLAGS', '')
-@@ -150,7 +152,8 @@ def get_extensions():
+@@ -223,6 +225,8 @@ def get_extensions():
      sources = [os.path.join(extensions_dir, s) for s in sources]
  
      include_dirs = [extensions_dir]
--
 +    if cuda_include_dir:
 +        include_dirs.append(cuda_include_dir)
+ 
      ext_modules = [
          extension(
-             'torchvision._C',
-@@ -199,7 +203,7 @@ def get_extensions():
-                     video_reader_src_dir,
+@@ -365,7 +369,7 @@ def get_extensions():
+                     videoapi_src_dir,
                      ffmpeg_include_dir,
                      extensions_dir,
 -                ],
 +                ] + [cuda_include_dir] if not None else [],
+                 library_dirs=[ffmpeg_library_dir] + library_dirs,
                  libraries=[
                      'avcodec',
-                     'avformat',
 -- 
 1.8.3.1
 

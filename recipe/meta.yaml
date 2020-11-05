@@ -1,4 +1,4 @@
-{% set version = "0.7.0" %}
+{% set version = "0.8.1" %}
 
 package:
   name: torchvision-base
@@ -13,7 +13,7 @@ source:
     - 0102-Fixed-failure-on-baremetal.patch
 
 build:
-  number: 4
+  number: 1
   string: {{ build_type }}_py{{ python | replace(".", "") }}_{{ PKG_BUILDNUM }}
   detect_binary_files_with_prefix: False
   script_env:
