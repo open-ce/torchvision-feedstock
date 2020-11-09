@@ -1,5 +1,5 @@
 From 6e13837f35dd1db1344b41b224370984e13f85e4 Mon Sep 17 00:00:00 2001
-From: Deepali Chourasia <deepch23@in.ibm.com>
+From: Nishidha Panpaliya <npanpa23@in.ibm.com>
 Date: Thu, 5 Nov 2020 12:35:34 +0000
 Subject: [PATCH] Fixed failure on baremetal
 
