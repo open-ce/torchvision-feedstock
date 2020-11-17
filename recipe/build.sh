@@ -21,4 +21,5 @@ then
     export CUDA_INCLUDE_PATH="${PREFIX}/include,${CUDA_HOME}/include,${CONDA_PREFIX}/include"
 fi
 
+export BUILD_VERSION=${PKG_VERSION}
 python setup.py install --single-version-externally-managed --record=record.txt
