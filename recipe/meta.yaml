@@ -1,4 +1,4 @@
-{% set version = "0.8.1" %}
+{% set version = "0.8.2" %}
 
 package:
   name: torchvision-base
@@ -7,7 +7,9 @@ package:
 source:
   fn: torchvision-{{ version }}.tar.gz
   url: https://github.com/pytorch/vision/archive/v{{ version }}.tar.gz
-  sha256: c46734c679c99f93e5c06654f4295a05a6afe6c00a35ebd26a2cce507ae1ccbd 
+  sha256: 9a866c3c8feb23b3221ce261e6153fc65a98ce9ceaa71ccad017016945c178bf 
+#  git_url: https://github.com/pytorch/vision.git
+#  git_rev: v{{ version }}
   patches:
     - 0101-find-ffmpeg-in-conda-env.patch
     - 0102-Fixed-failure-on-baremetal.patch

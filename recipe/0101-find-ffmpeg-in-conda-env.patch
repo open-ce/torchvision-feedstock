@@ -1,5 +1,5 @@
 diff --git a/setup.py b/setup.py
-index d667446..78f516d 100644
+index 1e8f7c9..e3436b1 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -329,7 +329,7 @@ def get_extensions():
@@ -8,6 +8,6 @@ index d667446..78f516d 100644
  
 -    ffmpeg_exe = distutils.spawn.find_executable('ffmpeg')
 +    ffmpeg_exe = distutils.spawn.find_executable('ffmpeg', path=os.path.join(os.getenv('PREFIX'), 'bin'))
-     has_ffmpeg = ffmpeg_exe is not None
-     print("FFmpeg found: {}".format(has_ffmpeg))
- 
+     # Disable ffmpeg by default
+     no_ffmpeg = os.environ.get("NO_FFMPEG", True)
+     has_ffmpeg = ffmpeg_exe is not None and not no_ffmpeg
