@@ -31,8 +31,6 @@ requirements:
     - setuptools {{ setuptools }}
     - ffmpeg {{ ffmpeg }}
     - av {{ av }}
-    - libpng {{ libpng }}
-    - jpeg {{ jpeg }}
 
   run:
     - cudatoolkit {{ cudatoolkit }}     # [build_type == 'cuda']
@@ -45,8 +43,6 @@ requirements:
     - six {{ six }}
     - ffmpeg                            # versioning handled by run_exports
     - av                                # versioning handled by run_exports
-    - libpng {{ libpng }}
-    - jpeg {{ jpeg }}
 
 about:
   home: http://pytorch.org/
