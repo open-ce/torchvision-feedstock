@@ -22,4 +22,6 @@ then
 fi
 
 export BUILD_VERSION=${PKG_VERSION}
+export TORCHVISION_INCLUDE=${PREFIX}/include
+export TORCHVISION_LIBRARY=${PREFIX}/lib
 python setup.py install --single-version-externally-managed --record=record.txt
