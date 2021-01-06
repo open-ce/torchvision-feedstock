@@ -13,7 +13,7 @@ source:
     - 0102-Fixed-failure-on-baremetal.patch
 
 build:
-  number: 3
+  number: 4
   string: {{ build_type }}_py{{ python | replace(".", "") }}_{{ PKG_BUILDNUM }}
   detect_binary_files_with_prefix: False
   script_env:
@@ -22,6 +22,7 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - patch
 
   host: 
     - future {{ future }}
@@ -45,8 +46,8 @@ requirements:
     - six {{ six }}
     - ffmpeg                            # versioning handled by run_exports
     - av                                # versioning handled by run_exports
-    - libpng {{ libpng }}
-    - jpeg {{ jpeg }}
+    - libpng                            # versioning handled by run_exports
+    - jpeg                              # versioning handled by run_exports
 
 about:
   home: http://pytorch.org/
