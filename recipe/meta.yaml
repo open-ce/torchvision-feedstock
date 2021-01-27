@@ -28,6 +28,7 @@ requirements:
   host: 
     - future {{ future }}
     - python {{ python }}
+    - cudatoolkit {{ cudatoolkit }}     # [build_type == 'cuda']
     - _pytorch_select  {{ pytorch_select_version }}
     - pytorch-base     {{ pytorch }}
     - setuptools {{ setuptools }}
