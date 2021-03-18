@@ -7,6 +7,6 @@ tests:
   - name: Run TorchVision tests
     command: |
         cd vision
-        pytest -v -k "not test_read_partial_video and not test_read_file_non_ascii and not test_write_file_non_ascii and not test_damaged_images and not test_decode_image and not test_decode_jpeg and not test_encode_jpeg and not test_write_jpeg" test/
+        pytest -v -k "not test_url_is_accessible and not test_backward_cuda_contiguous and not test_backward_cuda_non_contiguous and not test_linear_transformation and not test_random_affine" test/
   - name: Clean tests
     command: rm -rf vision
