@@ -55,6 +55,9 @@ requirements:
     - av                                # versioning handled by run_exports
     - libpng                            # versioning handled by run_exports
     - jpeg                              # versioning handled by run_exports
+    # Use pins to control cos6/cos7 match
+    - libgcc-ng  {{ libgcc }}
+    - libstdcxx-ng  {{ libstdcxx }}
 
 about:
   home: http://pytorch.org/
