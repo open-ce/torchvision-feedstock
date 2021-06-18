@@ -25,7 +25,9 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - patch
-
+    # Use pins to control cos6/cos7 match
+    - libgcc-ng  {{ libgcc }}
+    - libstdcxx-ng  {{ libstdcxx }}
   host: 
     - future {{ future }}
     - python {{ python }}
@@ -37,6 +39,9 @@ requirements:
     - av {{ av }}
     - libpng {{ libpng }}
     - jpeg {{ jpeg }}
+    # Use pins to control cos6/cos7 match
+    - libgcc-ng  {{ libgcc }}
+    - libstdcxx-ng  {{ libstdcxx }}
 
   run:
     - cudatoolkit {{ cudatoolkit }}     # [build_type == 'cuda']
@@ -51,6 +56,9 @@ requirements:
     - av                                # versioning handled by run_exports
     - libpng                            # versioning handled by run_exports
     - jpeg                              # versioning handled by run_exports
+    # Use pins to control cos6/cos7 match
+    - libgcc-ng  {{ libgcc }}
+    - libstdcxx-ng  {{ libstdcxx }}
 
 about:
   home: http://pytorch.org/
