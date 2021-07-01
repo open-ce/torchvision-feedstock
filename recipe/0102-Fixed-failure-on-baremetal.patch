@@ -1,17 +1,8 @@
-From 6e13837f35dd1db1344b41b224370984e13f85e4 Mon Sep 17 00:00:00 2001
-From: Nishidha Panpaliya <npanpa23@in.ibm.com>
-Date: Thu, 5 Nov 2020 12:35:34 +0000
-Subject: [PATCH] Fixed failure on baremetal
-
----
- setup.py | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
-
 diff --git a/setup.py b/setup.py
-index d667446..badf363 100644
+index fd653fe..28cab6d 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -181,10 +181,12 @@ def get_extensions():
+@@ -182,10 +182,12 @@ def get_extensions():
      define_macros = []
  
      extra_compile_args = {}
@@ -24,7 +15,7 @@ index d667446..badf363 100644
          if not is_rocm_pytorch:
              define_macros += [('WITH_CUDA', None)]
              nvcc_flags = os.getenv('NVCC_FLAGS', '')
-@@ -223,6 +225,8 @@ def get_extensions():
+@@ -224,6 +226,8 @@ def get_extensions():
      sources = [os.path.join(extensions_dir, s) for s in sources]
  
      include_dirs = [extensions_dir]
@@ -33,15 +24,12 @@ index d667446..badf363 100644
  
      ext_modules = [
          extension(
-@@ -365,7 +369,7 @@ def get_extensions():
-                     videoapi_src_dir,
-                     ffmpeg_include_dir,
+@@ -408,7 +412,7 @@ def get_extensions():
                      extensions_dir,
+                     *ffmpeg_include_dir,
+                     *include_dirs
 -                ],
 +                ] + [cuda_include_dir] if not None else [],
-                 library_dirs=[ffmpeg_library_dir] + library_dirs,
+                 library_dirs=ffmpeg_library_dir + library_dirs,
                  libraries=[
                      'avcodec',
--- 
-1.8.3.1
-
