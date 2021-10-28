@@ -7,7 +7,7 @@ package:
 source:
   fn: torchvision-{{ version }}.tar.gz
   url: https://github.com/pytorch/vision/archive/v{{ version }}.tar.gz
-  sha256: 82bb2c2b03d8a65f4ea74bb0ee5566b0876a1992aceefb1e11475c7b5d2e857b
+  sha256: 4d595cf0214c8adc817f8e3cd0043a027b52b481e05d67b04f4947fcb43d4277
   patches:
     - 0101-find-ffmpeg-in-conda-env.patch
     - 0102-Fixed-failure-on-baremetal.patch
