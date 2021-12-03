@@ -5,7 +5,7 @@ tests:
         git clone -b v$(python -c "import torchvision; print(torchvision.__version__)") https://github.com/pytorch/vision.git
         cd vision
         rm -rf torchvision
-        conda install -y pytest mock
+        conda install -y pytest pytest-mock
   - name: Run TorchVision tests
     command: |
         cd vision
