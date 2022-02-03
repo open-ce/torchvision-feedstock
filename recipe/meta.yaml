@@ -1,4 +1,4 @@
-{% set version = "0.11.2" %}
+{% set version = "0.11.3" %}
 
 package:
   name: torchvision-base
@@ -7,7 +7,7 @@ package:
 source:
   fn: torchvision-{{ version }}.tar.gz
   url: https://github.com/pytorch/vision/archive/v{{ version }}.tar.gz
-  sha256: 55689c57c29f82438a133d0af3315991037be59c8e02471bdcaa31731154a714
+  sha256: b4c51d27589783e6e6941ecaa67b55f6f41633874ec37f80b64a0c92c3196e0c
   patches:
     - 0101-find-ffmpeg-in-conda-env.patch
     - 0102-Fixed-failure-on-baremetal.patch
@@ -41,7 +41,7 @@ requirements:
     - cudatoolkit {{ cudatoolkit }}     # [build_type == 'cuda']
     - future {{ future }}
     - numpy  {{ numpy }}
-    - pillow {{ pillow }}
+    - pillow
     - python {{ python }}
     - _pytorch_select  {{ pytorch_select_version }}
     - pytorch-base     {{ pytorch }}
@@ -50,6 +50,12 @@ requirements:
     - av                                # versioning handled by run_exports
     - libpng                            # versioning handled by run_exports
     - jpeg                              # versioning handled by run_exports
+
+test:
+  imports:
+    - torchvision
+    - torchvision.datasets
+    - torchvision.transforms
 
 about:
   home: http://pytorch.org/
