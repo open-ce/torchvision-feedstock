@@ -9,6 +9,14 @@ tests:
   - name: Run TorchVision tests
     command: |
         cd vision
-         python -m pytest -v -k "not test_fasterrcnn_double and not test_detection_model and not test_qroialign and not test_random_rotate and not test_masks_box" test/
+        SKIPPED_TESTS=(
+                     "not test_fasterrcnn_double and"
+                     "not test_detection_model and"
+                     "not test_qroialign and"
+                     "not test_random_rotate and"
+                     "not test_masks_box and"
+                     "not test_classification_model"
+        )
+        pytest -k "${SKIPPED_TESTS[*]}" -v test/
   - name: Clean tests
     command: rm -rf vision
