@@ -1,6 +1,6 @@
 # A metapackge for installing GPU or CPU versions of torchvision explicitly
 
-{% set version = "0.11.3" %}
+{% set version = "0.12.0" %}
 
 package:
   name: torchvision{{ '-cpu' if build_type == 'cpu' else '' }}
