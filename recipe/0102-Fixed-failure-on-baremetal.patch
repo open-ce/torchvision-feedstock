@@ -1,47 +1,49 @@
-From 4537122017775895019f3286e9232a07a79b4227 Mon Sep 17 00:00:00 2001
+From 66744b65672f6afcdec59077c82821d2c18a73b9 Mon Sep 17 00:00:00 2001
 From: Deepali Chourasia <deepch23@in.ibm.com>
-Date: Thu, 19 Aug 2021 10:05:45 +0000
-Subject: [PATCH] fix build failure on baremetal
+Date: Mon, 21 Mar 2022 14:42:32 +0000
+Subject: [PATCH] fix failure on baremetal
 
 ---
- setup.py | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ setup.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index 4cc3d069..7dec64ff 100644
+index 8498354ad..19d22599c 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -185,10 +185,12 @@ def get_extensions():
+@@ -183,11 +183,13 @@ def get_extensions():
      define_macros = []
  
-     extra_compile_args = {'cxx': []}
+     extra_compile_args = {"cxx": []}
 +    cuda_include_dir = None
-     if (torch.cuda.is_available() and ((CUDA_HOME is not None) or is_rocm_pytorch)) \
-             or os.getenv('FORCE_CUDA', '0') == '1':
+     if (torch.cuda.is_available() and ((CUDA_HOME is not None) or is_rocm_pytorch)) or os.getenv(
+         "FORCE_CUDA", "0"
+     ) == "1":
          extension = CUDAExtension
          sources += source_cuda
 +        cuda_include_dir = os.getenv("CUDA_INCLUDE_PATH", None)
          if not is_rocm_pytorch:
-             define_macros += [('WITH_CUDA', None)]
-             nvcc_flags = os.getenv('NVCC_FLAGS', '')
-@@ -223,6 +225,8 @@ def get_extensions():
+             define_macros += [("WITH_CUDA", None)]
+             nvcc_flags = os.getenv("NVCC_FLAGS", "")
+@@ -220,7 +222,8 @@ def get_extensions():
      sources = [os.path.join(extensions_dir, s) for s in sources]
  
      include_dirs = [extensions_dir]
+-
 +    if cuda_include_dir:
 +        include_dirs.append(cuda_include_dir)
- 
      ext_modules = [
          extension(
-@@ -421,7 +425,7 @@ def get_extensions():
+             "torchvision._C",
+@@ -417,7 +420,7 @@ def get_extensions():
                      extensions_dir,
                      *ffmpeg_include_dir,
-                     *include_dirs
+                     *include_dirs,
 -                ],
 +                ] + [cuda_include_dir] if not None else [],
                  library_dirs=ffmpeg_library_dir + library_dirs,
                  libraries=[
-                     'avcodec',
+                     "avcodec",
 -- 
-2.23.0
+2.32.0
 

@@ -7,11 +7,11 @@ package:
 source:
   fn: torchvision-{{ version }}.tar.gz
   url: https://github.com/pytorch/vision/archive/v{{ version }}.tar.gz
-  sha256: b4c51d27589783e6e6941ecaa67b55f6f41633874ec37f80b64a0c92c3196e0c
+  sha256: 99e6d3d304184895ff4f6152e2d2ec1cbec89b3e057d9c940ae0125546b04e91
   patches:
     - 0101-find-ffmpeg-in-conda-env.patch
     - 0102-Fixed-failure-on-baremetal.patch
-    - 0103-pick-up-ancaconda-gcc.patch
+#    - 0103-pick-up-ancaconda-gcc.patch
 
 build:
   number: 1
@@ -36,7 +36,6 @@ requirements:
     - av {{ av }}
     - libpng {{ libpng }}
     - jpeg {{ jpeg }}
-
   run:
     - cudatoolkit {{ cudatoolkit }}     # [build_type == 'cuda']
     - future {{ future }}
@@ -46,6 +45,7 @@ requirements:
     - _pytorch_select  {{ pytorch_select_version }}
     - pytorch-base     {{ pytorch }}
     - six {{ six }}
+    - requests {{ requests }}
     - ffmpeg                            # versioning handled by run_exports
     - av                                # versioning handled by run_exports
     - libpng                            # versioning handled by run_exports
