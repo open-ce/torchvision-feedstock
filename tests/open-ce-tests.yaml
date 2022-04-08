@@ -15,7 +15,9 @@ tests:
                      "not test_qroialign and"
                      "not test_random_rotate and"
                      "not test_masks_box and"
-                     "not test_classification_model"
+                     "not test_classification_model and"
+                     "not test_url_is_accessible"
+
         )
         pytest -k "${SKIPPED_TESTS[*]}" -v test/
   - name: Clean tests
