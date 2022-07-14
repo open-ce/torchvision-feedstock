@@ -23,7 +23,7 @@ build:
 
 requirements:
   build:
-    - {{ compiler('cxx') }}
+    - {{ compiler('cxx') }}             #[ppc_arch != "p10"]
     - patch
   host: 
     - future {{ future }}
