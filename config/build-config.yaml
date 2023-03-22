@@ -7,8 +7,8 @@ recipes:
     path : vision-0.11/variants
 {% else %}
   - name : torchvision-base
-    path : vision-0.14/recipe
+    path : vision-0.15/recipe
 
   - name : torchvision-meta
-    path : vision-0.14/variants
+    path : vision-0.15/variants
 {% endif %}

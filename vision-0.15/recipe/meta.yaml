@@ -1,4 +1,4 @@
-{% set version = "0.14.1" %}
+{% set version = "0.15.1" %}
 
 package:
   name: torchvision-base
@@ -24,7 +24,6 @@ requirements:
     - {{ compiler('cxx') }}             #[ppc_arch != "p10"]
     - patch
   host: 
-    - future {{ future }}
     - python {{ python }}
     - cudatoolkit {{ cudatoolkit }}     # [build_type == 'cuda']
     - _pytorch_select  {{ pytorch_select_version }}
@@ -36,13 +35,11 @@ requirements:
     - jpeg {{ jpeg }}
   run:
     - cudatoolkit {{ cudatoolkit }}     # [build_type == 'cuda']
-    - future {{ future }}
     - numpy  {{ numpy }}
     - pillow
     - python {{ python }}
     - _pytorch_select  {{ pytorch_select_version }}
     - pytorch-base     {{ pytorch }}
-    - six {{ six }}
     - requests {{ requests }}
     - ffmpeg                            # versioning handled by run_exports
     - av                                # versioning handled by run_exports
