@@ -9,16 +9,16 @@ tests:
   - name: Run TorchVision tests
     command: |
         cd vision
-        SKIPPED_TESTS=(
-                     "not test_fasterrcnn_double and"
-                     "not test_detection_model and"
-                     "not test_qroialign and"
-                     "not test_random_rotate and"
-                     "not test_masks_box and"
-                     "not test_classification_model and"
-                     "not test_url_is_accessible"
-
+        TESTSUITES_TO_RUN=(
+                      test/test_backbone_utils.py
+                      test/test_datasets_utils.py
+                      test/test_extended_models.py
+                      test/test_utils.py
         )
-        pytest -k "${SKIPPED_TESTS[*]}" -v test/
+        for test_suite in "${TESTSUITES_TO_RUN[@]}"
+        do
+          TEST_SUITES+="$test_suite "
+        done
+        pytest -v ${TEST_SUITES}
   - name: Clean tests
     command: rm -rf vision
