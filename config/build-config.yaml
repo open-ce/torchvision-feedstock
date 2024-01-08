@@ -1,14 +1,6 @@
 recipes:
-{% if build_type == 'cuda' and cudatoolkit == '11.2' %}
   - name : torchvision-base
-    path : vision-0.11/recipe
+    path : vision-0.16.2/recipe
 
   - name : torchvision-meta
-    path : vision-0.11/variants
-{% else %}
-  - name : torchvision-base
-    path : vision-0.15/recipe
-
-  - name : torchvision-meta
-    path : vision-0.15/variants
-{% endif %}
+    path : vision-0.16.2/variants
